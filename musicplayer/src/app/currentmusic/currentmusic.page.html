@@ -1,0 +1,34 @@
+
+<ion-content padding>
+    <div class="profile col-xs-12">
+        <div class="">
+            <a><img src="https://homepages.cae.wisc.edu/~ece533/images/airplane.png" class="currentMusicImage"></a>
+        </div>
+        <audio #audioOption>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/ogg">
+            <source src="horse.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="currentMusicProgress">
+        <ion-progress-bar [value]="progressbarValue" (click)="setProgressBarValue($event)"></ion-progress-bar>
+        <div class="timelabels">
+            <ion-label slot="start" class="currentTime">{{currentTime}}</ion-label>
+            <ion-label slot="end" class="durationTime">{{remainingTime}}</ion-label>
+        </div>
+        <div class="col-xs-offset-3 currentMusicControls">
+            <span class="fa fa-repeat" (click)="movesongBackword()">
+            </span>
+            <span class="fa fa-step-backward" (click)="movesongBackword()">
+            </span>
+            <span *ngIf="!playing" class="fa fa-play" (click)="playSong()">
+            </span>
+            <span class="fa fa-pause" *ngIf="playing" (click)="pauseSong()">
+            </span>
+            <span class="fa fa-step-forward">
+            </span>
+            <span class="fa fa-heart">
+            </span>
+        </div>
+    </div>
+</ion-content>

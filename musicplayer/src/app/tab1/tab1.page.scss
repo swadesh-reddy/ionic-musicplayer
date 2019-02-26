@@ -1,0 +1,42 @@
+.panel {
+    margin: 10px;
+}
+
+.profile {
+    text-align: center;
+}
+
+#scrollX {
+    display: inline-flex;
+    overflow-x: auto;
+}
+
+#scroll1 {
+    display: inline-flex;
+    overflow-x: auto;
+}
+
+#scroll2 {
+    display: inline-flex;
+    overflow-x: auto;
+}
+
+img {
+    max-width: none;
+    width: 100px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.tab1 {
+    margin-top: 45px;
+}
+
+.sideheading {
+    padding-left: 13px;
+    font-weight: 600;
+    color: #212020;
+    font-size: 14px;
+}
