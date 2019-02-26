@@ -16,13 +16,13 @@ export class CurrentmusicPage implements OnInit {
     public reminutes: any
     public reseconds: any
     public progressbarValue: any
-    public clientWidth:any
+    public clientWidth: any
+    public currentSongloop:any
 
     constructor(platform: Platform) {
+
         platform.ready().then((readySource) => {
             this.clientWidth = platform.width();
-            console.log('Width: ' + platform.width());
-            console.log('Height: ' + platform.height());
         });
     }
 
@@ -36,7 +36,6 @@ export class CurrentmusicPage implements OnInit {
 
     playSong() {
         this.playing = true;
-        console.log(this.audioPlayerRef.nativeElement.duration); // will get you a lot more updates.
         this.audioPlayerRef.nativeElement.play();
     }
     pauseSong() {
@@ -45,7 +44,6 @@ export class CurrentmusicPage implements OnInit {
     }
     getProgressBarValue() {
         this.progressbarValue = this.audioPlayerRef.nativeElement.currentTime / this.audioPlayerRef.nativeElement.duration;
-        console.log(this.audioPlayerRef.nativeElement.currentTime);
     }
     setProgressBarValue(event) {
         this.progressbarValue = event.clientX / this.clientWidth;
@@ -65,7 +63,14 @@ export class CurrentmusicPage implements OnInit {
         minutes = (minutes >= 10) ? minutes : "0" + minutes;
         return minutes;
     }
-
+    setloop() {
+        this.currentSongloop = this.audioPlayerRef.nativeElement.loop;
+        if (this.currentSongloop == false) {
+            this.audioPlayerRef.nativeElement.loop = true
+        } else {
+            this.audioPlayerRef.nativeElement.loop = false;
+        }
+    }
     formatSeconds(seconds) {
         seconds = Math.floor(seconds % 60);
         seconds = (seconds >= 10) ? seconds : "0" + seconds;

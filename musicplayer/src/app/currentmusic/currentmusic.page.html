@@ -5,8 +5,8 @@
             <a><img src="https://homepages.cae.wisc.edu/~ece533/images/airplane.png" class="currentMusicImage"></a>
         </div>
         <audio #audioOption>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/ogg">
-            <source src="horse.mp3" type="audio/mpeg">
+            <source src="../../assets/NanuGelicheyMagavaadu.mp3" type="audio/ogg">
+            <source src="../../assets/NanuGelicheyMagavaadu.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
     </div>
@@ -17,7 +17,7 @@
             <ion-label slot="end" class="durationTime">{{remainingTime}}</ion-label>
         </div>
         <div class="col-xs-offset-3 currentMusicControls">
-            <span class="fa fa-repeat" (click)="movesongBackword()">
+            <span class="fa fa-repeat" [ngStyle]="currentSongloop && {'color': '#e31b23'}" (click)="setloop()">
             </span>
             <span class="fa fa-step-backward" (click)="movesongBackword()">
             </span>
@@ -27,7 +27,7 @@
             </span>
             <span class="fa fa-step-forward">
             </span>
-            <span class="fa fa-heart">
+            <span class="fa fa-heart" [ngStyle]="currentSongloop && {'color': '#e31b23'}">
             </span>
         </div>
     </div>
