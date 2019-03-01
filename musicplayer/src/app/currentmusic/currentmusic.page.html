@@ -1,14 +1,14 @@
 
 <ion-content padding>
-    <div class="profile col-xs-12">
+    <div class="profile">
         <div class="">
-            <a><img src="https://homepages.cae.wisc.edu/~ece533/images/airplane.png" class="currentMusicImage"></a>
+            <a><img [src]="songImage" class="currentMusicImage"></a>
+            <div class="songname">{{songInfo.tags.title}}</div>
+            <div class="albumname">{{songInfo.tags.album}}</div>
         </div>
         <audio #audioOption>
-            <source src="../../assets/NanuGelicheyMagavaadu.mp3" type="audio/ogg">
-            <source src="../../assets/NanuGelicheyMagavaadu.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+            <source [src]="audiourl" type="audio/ogg">
+            </audio>
     </div>
     <div class="currentMusicProgress">
         <ion-progress-bar [value]="progressbarValue" (click)="setProgressBarValue($event)"></ion-progress-bar>
