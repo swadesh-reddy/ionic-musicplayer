@@ -1,0 +1,44 @@
+
+<ion-content padding>
+    <div class="errmessage" id="errmessage">{{errmessage}}<span (click)="closeerrmessage()" class="fa fa-close"></span></div>
+    <div class="loginPage">
+        <div class="panel panel-body loginPanel">
+            <form (ngSubmit)="onRegister(registerForm.value)" #registerForm="ngForm">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" #username="ngModel" (ngModel)="user.username" minlength="5" required />
+                    <div class="float">
+                        <span class="left">Username</span><span class="right fa fa-user"></span>
+                    </div>
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text text-danger">enter valid username</div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" #password="ngModel" (ngModel)="user.password" minlength="5" required />
+                    <div class="float">
+                        <span class="left">password</span><span class="right fa fa-lock"></span>
+                    </div>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text text-danger">enter minimum 4 letters</div>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" #email="ngModel" (ngModel)="user.email" minlength="5" required />
+                    <div class="float">
+                        <span class="left">email</span><span class="right fa fa-envelope"></span>
+                    </div>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text text-danger">enter valid email</div>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control" name="contact" #contact="ngModel" (ngModel)="user.contact" minlength="5" required />
+                    <div class="float">
+                        <span class="left">contact</span><span class="right fa fa-mobile"></span>
+                    </div>
+                    <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="text text-danger">enter valid contact</div>
+                </div>
+
+                <button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-success">Register <span *ngIf="loading" class="fa fa-spinner fa-spin"></span></button>
+                <button type="button" class="btn btn-primary" [routerLink]="['/login']">Login</button>
+            </form>
+        </div>
+
+
+    </div>
+
+</ion-content>

@@ -1,14 +1,15 @@
 
-<ion-content padding>
+<ion-content>
     <div class="profile">
         <div class="">
-            <a><img [src]="songImage" class="currentMusicImage"></a>
-            <div class="songname">{{songInfo.tags.title}}</div>
-            <div class="albumname">{{songInfo.tags.album}}</div>
+             <img [src]="songImage" class="currentMusicImage">
+            <span class="close-btn" (click)="navigateToHome()">X</span>
+            <div *ngIf="songInfo" class="songname">{{songInfo.tags.title}}</div>
+            <div *ngIf="songInfo" class="albumname">{{songInfo.tags.album}}</div>
         </div>
         <audio #audioOption>
             <source [src]="audiourl" type="audio/ogg">
-            </audio>
+        </audio>
     </div>
     <div class="currentMusicProgress">
         <ion-progress-bar [value]="progressbarValue" (click)="setProgressBarValue($event)"></ion-progress-bar>
@@ -17,17 +18,17 @@
             <ion-label slot="end" class="durationTime">{{remainingTime}}</ion-label>
         </div>
         <div class="col-xs-offset-3 currentMusicControls">
-            <span class="fa fa-repeat" [ngStyle]="currentSongloop && {'color': '#e31b23'}" (click)="setloop()">
+            <span class="fa fa-repeat"  (click)="setloop()">
             </span>
             <span class="fa fa-step-backward" (click)="movesongBackword()">
             </span>
-            <span *ngIf="!playing" class="fa fa-play" (click)="playSong()">
+            <span *ngIf="!playing" class="fa fa-play" (click)="handleSong()">
             </span>
-            <span class="fa fa-pause" *ngIf="playing" (click)="pauseSong()">
+            <span class="fa fa-pause" *ngIf="playing" (click)="handleSong()">
             </span>
             <span class="fa fa-step-forward">
             </span>
-            <span class="fa fa-heart" [ngStyle]="currentSongloop && {'color': '#e31b23'}">
+            <span class="fa fa-heart" [ngStyle]="favouriteSong && {'color': '#e31b23'}" (click)="addFavouriteSong(songInfo.tags.title)">
             </span>
         </div>
     </div>

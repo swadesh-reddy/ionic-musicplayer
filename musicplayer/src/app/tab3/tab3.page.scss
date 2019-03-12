@@ -12,28 +12,44 @@
     margin-left: -25px;
     letter-spacing: 2px;
     text-align: justify;
-    text-transform: uppercase;
+   // text-transform: uppercase;
     padding-top: 30px;
     padding-bottom: 36px;
 }
-
+.button-native {
+    border: 1px solid lightgray;
+    border-radius: inherit;
+}
 .form-group {
     margin: 0px;
     border-top: 1px solid #f1f1f1;
+}
+.fa-edit{
+    float:right;
 }
 
 .img-circle {
     border-radius: 50%;
     width: 100px;
-    height: 89px;
+    height: 100px;
     border: 1px solid #fff;
     box-shadow: 1px 4px 16px 1px lightgrey;
 }
 
 .btn-success {
     position: fixed;
-    top: 11px;
+    top: 5px;
+    letter-spacing: 1px;
     z-index: 10;
     right: 10px;
     border-radius: 0;
+}
+.logout {
+    width: 96%;
+    margin: 10px;
+    padding: 16px;
+    background: transparent;
+    border: 1px solid #eee;
+    font-size: 18px;
+    color: gray;
 }

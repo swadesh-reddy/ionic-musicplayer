@@ -1,4 +1,10 @@
 
 export interface SongInfo {
-    tags:Object
+    tags: Object,
+    albumname: String,
+    songname: String,
+    genre: String,
+    artist: String,
+    date: Date,
+    songType: String
 }

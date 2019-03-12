@@ -1,0 +1,109 @@
+.loginPage {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+
+.loginPanel {
+    background-color: transparent;
+    position: relative;
+    margin-top: 100px;
+    padding: 20px;
+}
+
+.form-control {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #337ab7;
+    border-radius: 0px;
+    /* border: oldlace; */
+    outline: none;
+    box-shadow: none;
+}
+
+.float span {
+    position: absolute;
+    color: #337ab7;
+    margin-top: -30px;
+    padding-left: 10px;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.fa-close {
+    float: right;
+}
+
+.float .right {
+    float: right;
+    right: 37px;
+}
+
+.forget-password {
+    float: right;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 10px;
+    /* margin: 0px; */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    width: 48%;
+    margin-right: 6px;
+    border-radius: 0px;
+}
+
+
+
+input:focus + .float .left {
+    transition: 0.3s all;
+    margin-top: -45px;
+    font-size: 12px;
+}
+
+.ng-valid[required] + .float .left {
+    margin-top: -45px;
+    font-size: 12px;
+}
+
+.errmessage {
+    display: none;
+    position: fixed;
+    margin-top: 30px;
+    margin-left: 30px;
+    padding: 10px;
+    width: 86%;
+    background-color: lightblue;
+}
+
+.errmessage:hover {
+}
+
+input:focus {
+    box-shadow: 0px;
+    outline: none;
+}
+
+.skiplogin {
+    text-align: center;
+    color: #f1f1f1;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.forget-password {
+    margin-top: -6px;
+    margin-bottom: 7px;
+}
