@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
-  { path: 'currentmusic/:songname', loadChildren: './currentmusic/currentmusic.module#CurrentmusicPageModule' },
+  { path: 'currentmusic', loadChildren: './currentmusic/currentmusic.module#CurrentmusicPageModule' },
     { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule'},
   { path: 'upload-songs', loadChildren: './upload-songs/upload-songs.module#UploadSongsPageModule' }

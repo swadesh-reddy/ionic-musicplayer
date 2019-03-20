@@ -33,7 +33,6 @@ export class UploadSongsPage implements OnInit {
         jsmediatags.read(data.target.files[0], {
             onSuccess: tag => {
                 this.songname = tag.tags.title;
-                this.songname = this.songname.substr(19);
                 this.albumname = tag.tags.album;
                 this.genre = tag.tags.genre;
                 this.artist = tag.tags.artist;
@@ -46,18 +45,26 @@ export class UploadSongsPage implements OnInit {
         });
     }
     onSongupload(data) {
-        console.log(data)
-        this.date = new Date();
-        console.log(this.date)
-        var form = new FormData();
-        form.append("songname", this.songname);
-        form.append("albumname", this.albumname);
-        form.append("genre", this.genre);
-        form.append("artist", this.artist);
-        form.append("songType", data.songType);
-        form.append("song", this.song, this.song.name);
-        this.musicauth.uploadMusic(form).subscribe((data) => {
-            console.log(data);
-        })
+            var songname = 'images/' + this.songname + '.mp3';
+        this.musicauth.getMusicFileByName(songname).subscribe(song => {
+            console.log(song.byteLength)
+            if (song.byteLength < 1 ) {
+            this.date = new Date();
+            console.log(this.date)
+            var form = new FormData();
+            form.append("songname", this.songname);
+            form.append("albumname", this.albumname);
+            form.append("genre", this.genre);
+            form.append("artist", this.artist);
+            form.append("songType", data.songType);
+            form.append("song", this.song, this.song.name);
+            this.musicauth.uploadMusic(form).subscribe((data) => {
+                console.log(data);
+            })
+            }
+            })
+       
     }
+   
+
 }

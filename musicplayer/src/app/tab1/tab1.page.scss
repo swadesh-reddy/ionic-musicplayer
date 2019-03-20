@@ -4,8 +4,6 @@
 .userpic {
     float: right;
     margin-right: 5px;
-    position: fixed;
-    margin-top: -27px;
     right: 5px;
     box-shadow: 0px 0px 5px 2px rgba(0,0,0,.25);
 }
@@ -27,15 +25,9 @@ ion-title{
     font-size: 12px;
     padding-top: 8px;
     letter-spacing: 1px;
+    width: 100%;
+    padding-left: 9px;
 }
-#scroll2 {
-    display: inline-flex;
-    overflow-x: auto;
-}
- 
-img {
-    max-width: none;
- }
 
 ::-webkit-scrollbar {
     display: none;
@@ -57,4 +49,180 @@ img {
     text-transform: capitalize;
     margin: 4px;
     font-size: 14px;
+}
+.handleMusic {
+    position: fixed;
+    height: 45px;
+    bottom: 0px;
+    left: -10px;
+    width: 100%;
+    border-radius: 0px;
+    border: 1px solid lightgray;
+}
+.currentMusicBottomPic {
+    float: left;
+    width: 45px;
+    height: 45px;
+    margin-top: -1px;
+    box-shadow: 3px 3px 10px 1px lightgrey;
+}
+.currentMusicBottomPicfont{
+    font-size:20px;
+}
+.songtitleBottom {
+    width: 75%;
+    text-align: center;
+}
+.fa {
+    color: #173f5f;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    padding: 11px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+.currentMusicImage {
+    width: 100%;
+    height: 272px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 600;
+    /* padding-top: 8px; */
+    letter-spacing: 1px;
+}
+
+.currentMusicProgress {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    z-index: 1000 !important;
+    background: #fff;
+    border-top: 1px solid gray;
+       box-shadow: 3px 3px 10px 1px lightgrey;
+}
+
+.fa-random {
+    position: absolute;
+    left: 10px;
+}
+
+.fa-heart {
+    position: absolute;
+    right: -6px;
+}
+
+.item-native {
+    border: 0;
+}
+
+
+.musicControl{
+    margin-left:24%;
+}
+.fplay {
+    padding-right: 26px;
+    padding-left: 26px;
+}
+.fa-arrow-down {
+    font-size: 17px;
+}
+.fa-ellipsis-v {
+    font-size: 17px;
+}
+.currentMusicControls {
+    font-size: 31px;
+    margin-top: 9px;
+}
+
+.timelabels .item-inner {
+    border: none;
+    padding-top: 10px
+}
+
+.profile {
+    padding: 0;
+    text-align: center
+}
+
+#shadow-root div {
+    padding: 0px
+}
+
+.albumname {
+    font-size: 12px
+}
+
+.close-btn {
+    position: fixed;
+    top: 20px;
+    /* bottom: 0; */
+    /* left: 0; */
+    right: 20px;
+    color: #fff;
+    font-size: 30px;
+}
+.dropdown-menu{
+    right:0;
+    left:unset;
+}
+
+
+.pnls {
+    margin-bottom: 0px;
+}
+
+.musicList {
+    margin-top: 15px;
+}
+
+.pnl {
+    border: 0px;
+}
+
+.currentsong {
+    width: 100%;
+    height: 300px;
+}
+.currentMusicLibrarys{
+    overflow-y:auto;
+}
+.currentTime {
+    position: fixed;
+    left: 5px;
+    margin-top: -25px;
+    font-size: 9px;
+    /* border: 1px solid lightblue; */
+    background: #428bca;
+    padding: 2px 9px 1px 8px;
+    color: #fff;
+    display: none;
+    border-radius: 22%;
+}
+.durationTime {
+    position: fixed;
+    right: 5px;
+    margin-top: -25px;
+    font-size: 9px;
+    background: #428bca;
+    padding: 2px 9px 1px 8px;
+    color: #fff;
+    border-radius: 22%;
+    display: none;
+}
+.progressbar:hover .currentTime {
+    display: block;
+}
+.progressbar:hover .durationTime {
+    display: block;
+}
+.currentplayingsongGif {
+    position: absolute;
+    right: 0;
+}
+iframe{
+    border:0;
 }

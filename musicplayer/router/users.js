@@ -8,6 +8,7 @@ var Song = require('../model/song');
 var Favourite = require('../model/favourite');
 var Recent = require('../model/recent');
 var jwt_decode = require('jwt-decode');
+var path = require('path');
 
 var multer = require('multer');
 var storage = multer.diskStorage({
@@ -65,7 +66,6 @@ router.post('/login', (req, res, next) => {
                 {
                     expiresIn: 6048000 // 1 week
                 });
-            console.log(config.secret);
             res.json({
                 success: true,
                 token: token,
@@ -90,7 +90,6 @@ router.post('/update', verifyToken, upload.single('propic'), (req, res, next) =>
     }
     console.log(email);
     User.getUserByEmail(email, (err, user) => {
-        console.log(req)
         if (err) throw err;
         else {
             user.username = req.body.username;
@@ -143,9 +142,15 @@ router.get('/getMusic', (req, res) => {
 router.get('/getMusicByName', (req, res) => {
     console.log(req.query.songname)
     fs.readFile('./' + req.query.songname, (error, file) => {
-        console.log(file);
         res.end(file)
     });
+})
+
+router.get('/download', verifyToken, (req, res) => {
+
+    filepath = path.join(__dirname, '../images') + '/' + req.query.songname;
+    console.log(filepath);
+    res.sendFile(filepath);
 })
 
 router.get('/getFavouriteMusic', verifyToken, (req, res) => {
@@ -183,6 +188,7 @@ router.get('/findRecentMusic', verifyToken, (req, res) => {
     Recent.getRecentSongByName(userFavourite, function (err, data) {
         if (err) { throw err }
         else {
+
             res.json(data);
         }
     })
@@ -196,7 +202,6 @@ router.get('/checkFavouriteSong', verifyToken, (req, res) => {
     Favourite.getFavouriteSongByName(checkSong, function (err, data) {
         if (err) { throw err }
         else {
-            console.log(data)
             res.json(data);
         }
     })
@@ -210,7 +215,6 @@ router.get('/deleteFavouriteSong', verifyToken, (req, res) => {
     Favourite.deleteFavouriteByName(checkSong, function (err, data) {
         if (err) { throw err }
         else {
-            console.log(data)
             res.json({success:true});
         }
     })
@@ -237,8 +241,7 @@ router.post('/addRecentMusic', verifyToken, (req, res) => {
                 songname: req.body.songname
             })
             Recent.addRecentSong(recentSong, function (err, data) {
-
-                if (err) { throw err }
+              if (err) { throw err }
                 else {
                     res.json({ success: true });
                 }

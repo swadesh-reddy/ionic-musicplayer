@@ -2,12 +2,22 @@
     width: 100%;
     height: 272px;
 }
-
+label {
+    font-size: 13px;
+    font-weight: 600;
+    /* padding-top: 8px; */
+    letter-spacing: 1px;
+}
 .currentMusicProgress {
     position: fixed;
-    bottom: 15px;
+    padding-bottom: 15px;
+    bottom:0px;
     left: 0;
     right: 0;
+    z-index: 1000 !important;
+    background: #fff;
+    border-top: 1px solid gray;
+    box-shadow: -3px -7px 11px -3px lightgrey;
 }
 .fa-repeat {
     position: absolute;
@@ -64,4 +74,23 @@
     right: 20px;
     color: #fff;
     font-size: 30px;
+}
+.currentimages{
+    margin:6px
+}
+.panel{
+    margin-bottom:0px;
+}
+.musicList{
+    margin-bottom:95px;
+}
+.songname{
+    width:183px;
+}
+.panel{
+    border:0px;
+}
+.currentsong {
+    width: 100%;
+    height: 300px;
 }

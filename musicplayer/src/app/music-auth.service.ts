@@ -76,6 +76,12 @@ export class MusicAuthService {
         const headers = this._headers.append('Authorization', 'Bearer ' + this.token);
         return this.http.get(this.userauth.url + '/findRecentMusic', {params: params, headers: headers });
     }
+    downloadSong(song) {
+        var params = new HttpParams().set('songname', song);
+        this.token = this.userauth.loadToken();
+        const headers = this._headers.append('Authorization', 'Bearer ' + this.token);
+        return this.http.get(this.userauth.url + '/download', { params: params, headers: headers, responseType: 'arraybuffer' });
+    }
     getMeta(object, blob, category) {
         jsmediatags.read(blob, {
             onSuccess: tag => {
@@ -86,6 +92,11 @@ export class MusicAuthService {
                 console.log(error);
             }
         });
+    }
+    formatTitle(songname, start, index) {
+        songname = songname.substring(start, index);
+        songname = songname + '..';
+        return songname;
     }
 
 }

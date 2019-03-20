@@ -11,6 +11,7 @@ var songSchema = mongoose.Schema({
     song: String,
 })
 var song = module.exports = mongoose.model('song', songSchema);
+
 module.exports.getSongBySongname = function (songname, callback) {
     song.findOne(songname, callback);
 }

@@ -1,34 +1,41 @@
 
 <ion-content>
     <div class="profile">
-        <div class="">
-             <img [src]="songImage" class="currentMusicImage">
-            <span class="close-btn" (click)="navigateToHome()">X</span>
-            <div *ngIf="songInfo" class="songname">{{songInfo.tags.title}}</div>
-            <div *ngIf="songInfo" class="albumname">{{songInfo.tags.album}}</div>
+            <div class="currentsong">
+                <img *ngIf="currentsong" [src]="currentsong.image" class="currentMusicImage">
+                <span class="close-btn" (click)="navigateToHome()">X</span>
+                <label *ngIf="currentsong" class="songname">{{currentsong.title}}</label>
+                <div *ngIf="currentsong" class="albumname">{{currentsong.tags.album}}</div>
+            </div>
+      </div>
+    <div class="musicList">
+        <div *ngFor="let song of currentsonglist" class="panel panel-default" >
+            <div *ngIf="currentsong" (click)="updateCurrentSong(song)" class="" [ngStyle]="{'color': song.title === currentsong.title ? 'green' : '#000' }">
+                <img [src]="song.image" class="currentimages" width="30" height="30">
+                <label *ngIf="song.tags.title" class="songname">{{song.title}}</label>
+                <i class="fa fa-arrow-down"></i>
+                <i class="fa fa-ellipsis-v"></i>
+            </div>
         </div>
-        <audio #audioOption>
-            <source [src]="audiourl" type="audio/ogg">
-        </audio>
     </div>
     <div class="currentMusicProgress">
         <ion-progress-bar [value]="progressbarValue" (click)="setProgressBarValue($event)"></ion-progress-bar>
         <div class="timelabels">
             <ion-label slot="start" class="currentTime">{{currentTime}}</ion-label>
-            <ion-label slot="end" class="durationTime">{{remainingTime}}</ion-label>
+            <ion-label *ngIf="remainingTime !== '0NaN:0NaN'" slot="end" class="durationTime">{{remainingTime}}</ion-label>
         </div>
         <div class="col-xs-offset-3 currentMusicControls">
             <span class="fa fa-repeat"  (click)="setloop()">
             </span>
-            <span class="fa fa-step-backward" (click)="movesongBackword()">
+            <span class="fa fa-step-backward" (click)="playPreviousSong()">
             </span>
             <span *ngIf="!playing" class="fa fa-play" (click)="handleSong()">
             </span>
             <span class="fa fa-pause" *ngIf="playing" (click)="handleSong()">
             </span>
-            <span class="fa fa-step-forward">
+            <span class="fa fa-step-forward" (click)="playNextSong()">
             </span>
-            <span class="fa fa-heart" [ngStyle]="favouriteSong && {'color': '#e31b23'}" (click)="addFavouriteSong(songInfo.tags.title)">
+            <span class="fa fa-heart" [ngStyle]="favouriteSong && {'color': '#e31b23'}" (click)="addFavouriteSong(currentsong.tags.title)">
             </span>
         </div>
     </div>
