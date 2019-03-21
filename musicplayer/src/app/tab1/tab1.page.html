@@ -19,7 +19,7 @@
     </div>
     <div class="">
         <h5 class="sideheading">select your Mood</h5>
-            <div *ngFor="let song of mood;let i= index" class="col-xs-5 moodcard panel panel-default" [style.background]="getColor(i)">
+            <div *ngFor="let song of mood;let i= index" class="col-xs-5 moodcard panel panel-default" style="border:1px solid #000" [style.border-color]="getColor(i)" [style.color]="getColor(i)">
                 {{song}}
             </div>
         </div>
@@ -29,6 +29,8 @@
         <i *ngIf="!playing" class="fa fa-play" style="font-size:20px" (click)="handleSong()"></i>
         <i *ngIf="playing" class="fa fa-pause " style="font-size:20px" (click)="handleSong()"></i>
     </div>
+
+<!--current Music page starts-->
     <div *ngIf="currentMusicPageView">
         <div class="currentMusicProgress">
             <div class="currentMusicLibrarys" [ngStyle]="{'height':clientHeight}">
@@ -43,21 +45,23 @@
                 <div class="musicList">
                     <div *ngFor="let song of currentsonglist" class="pnls pnl panel panel-default">
                         <div *ngIf="currentsong"  class="" [ngStyle]="{'color': song.title === currentsong.title ? '#428bca' : '#000' }">
-                            <img [src]="song.image" class="currentimages col-xs-2" width="30" height="30">
-                            <label *ngIf="song.tags.title" (click)="updateCurrentSong(song)" class="songname col-xs-5" style="width: 50%;">{{song.fulltitle}}</label>
-                            <div class="dropdown col-xs-4">
-                            <img *ngIf="song.title === currentsong.title && playing" src="../../assets/images/imageedit_18_4251367136.gif" class="currentplayingsongGif giphy-embed" width="50" height="30" />
-                            <img *ngIf="song.title === currentsong.title && !playing" src="../../assets/images/Capture.PNG" class="currentplayingsongGif giphy-embed" width="50" height="30" />
-                                <i class="fa fa-arrow-down" (click)="downloadSong(song.tags.title)" style="position: relative"></i>
-                                <i class="dropdown-toggle fa fa-ellipsis-v" data-toggle="dropdown" style="position: absolute;"></i>
-                                <ul class="dropdown-menu">
-                                    <li><a (click)="addToAudioQueue(song)">Add to Queue</a></li>
-                                    <li><a (click)="removeFromAudioQueue(song)">Remove from queue</a></li>
-                                    <li><a (click)="clearAudioQueue()">clear queue</a></li>
-                                    <li><a (click)="removeFromCurrentplaylist(song)">Remove from playlist</a></li>
-                                </ul>
+                            <div class="col-xs-2 col-sm-1" style="padding:0px;width:12%"><img [src]="song.image" class="currentimages" width="30" height="30"></div>
+                            <div class="col-xs-6 col-sm-7" style="padding:0px">
+                                <label *ngIf="song" (click)="updateCurrentSong(song)" class="songname">{{song.fulltitle}}</label>
+                                </div>
+                                <div class="dropdown col-xs-4 col-sm-4" style="padding:0px">
+                                    <i class="dropdown-toggle fa fa-ellipsis-v" data-toggle="dropdown" style="float:right"></i>
+                                    <i class="fa fa-arrow-down" (click)="downloadSong(song.tags.title)" style="float:right"></i>
+                                    <img *ngIf="song.title === currentsong.title && playing" src="../../assets/images/imageedit_18_4251367136.gif" class="currentplayingsongGif giphy-embed" width="24" height="27" />
+                                    <img *ngIf="song.title === currentsong.title && !playing" src="../../assets/images/Capture.PNG" class="currentplayingsongGif giphy-embed" width="24" height="30" />
+                                    <ul class="dropdown-menu">
+                                        <li><a (click)="addToAudioQueue(song)">Add to Queue</a></li>
+                                        <li><a (click)="removeFromAudioQueue(song)">Remove from queue</a></li>
+                                        <li><a (click)="clearAudioQueue()">clear queue</a></li>
+                                        <li><a (click)="removeFromCurrentplaylist(song)">Remove from playlist</a></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -69,10 +73,12 @@
                         <ion-label slot="end" class="durationTime">{{remainingTime}}</ion-label>
                     </div>
                 </div>
-                <div class="currentMusicControls">
-                    <span class=" col-xs-2 fa fa-random" [ngStyle]="{'color': shuffle ? '#428bca' : '#000' }" (click)="setloop()">
+            <div class="currentMusicControls">
+                <div class="col-xs-2 col-sm-2 ">
+                    <span class="fa fa-random" [ngStyle]="{'color': shuffle ? '#428bca' : 'lightgray' }" (click)="setloop()">
                     </span>
-                    <div class=" musicControl col-xs-8">
+                   </div>
+                <div class=" musicControl col-xs-8 col-sm-8">
                         <span class="fa fa-step-backward" (click)="playPreviousSong()">
                         </span>
                         <span *ngIf="!playing" class="fa fa-play fplay" (click)="handleSong()">
@@ -82,11 +88,14 @@
                         <span class="fa fa-step-forward" (click)="playNextSong()">
                         </span>
                     </div>
-                    <span class=" col-xs-2 fa fa-heart" [ngStyle]="favouriteSong && {'color': '#e31b23'}" (click)="addFavouriteSong(currentsong.tags.title)">
-                    </span>
+                    <div class="col-xs-2 col-sm-2 ">
+                        <span class="fa fa-heart" [ngStyle]="favouriteSong && {'color': '#e31b23'}" (click)="addFavouriteSong(currentsong.tags.title)">
+                        </span>
+                    </div>
                 </div>
             </div>
             </div>
-        </div>  
+            </div>
+          
 </ion-content>
 

@@ -49,6 +49,7 @@ export class Tab1Page {
     public songImage: any;
     public favouriteSong: Boolean;
     public currentsongname: any;
+    public audiourl: any;
     public categoryname: any;
     public imgHeight: any;
     public mood = ['Love', 'party', 'sad', 'pleasent'];
@@ -97,9 +98,10 @@ export class Tab1Page {
             this.allSongs.recent = this.recent;
         })
     }
-    handleSongs(tag: any, category) {
+    handleSongs(blob, tag: any, category) {
         tag.image = 'data:image/png;base64,' + btoa(String.fromCharCode.apply(null, new Uint8Array(tag.tags.APIC.data.data)));
-        tag.title = this.musicauth.formatTitle(tag.tags.title, 30, 18)
+        tag.title = this.musicauth.formatTitle(tag.tags.title, 30, 18);
+        tag.blob = blob;
         category.push(tag);
     }
 
@@ -108,7 +110,7 @@ export class Tab1Page {
             data[song].songname = 'images/' + data[song].songname + '.mp3';
             this.musicauth.getMusicFileByName(data[song].songname).subscribe(data => {
                 this.blob = new Blob([new Uint8Array(data)], { type: 'audio/mpeg' });
-                this.musicauth.getMeta(this, this.blob, category);
+                 this.musicauth.getMeta(this, this.blob, category);
             })
         }
     }
@@ -129,8 +131,9 @@ export class Tab1Page {
     loadSong() {
         if (this.currentsong) {
             this.checkFavouriteSong(this.currentsong.tags.title);
-            var audiourl = this.userauth.url + '/images/' + this.currentsong.tags.title + '.mp3';
             this.audio = document.createElement('AUDIO');
+            var audiourl = window.URL.createObjectURL(this.currentsong.blob)
+            console.log(audiourl)
             this.audio.setAttribute('src', audiourl);
             this.audio.setAttribute('type', 'audio/mpeg');
             this.audio.play();
@@ -248,7 +251,7 @@ export class Tab1Page {
         songname = songname+'.mp3'
         this.musicauth.downloadSong(songname).subscribe((data) => {
             console.log(data);
-            this.blob = new Blob([new Uint8Array(data)], { type: 'audio/mpeg' });;
+            this.blob = new Blob([new Uint8Array(data)], { type: 'audio/mpeg' });
                 
         })
     }
@@ -256,23 +259,18 @@ export class Tab1Page {
         this.audio.pause();
         this.playing = false;
         this.currentsong = song;
+        this.currentTime = 0;
+        this.remainingTime = 0;
         this.loadSong();
     }
     playNextSong() {
-        var songslist:any
-        if (this.audioqueue.length>0) {
-            songslist = this.audioqueue;
-            console.log(this.audioqueue.length);
-        }
-        else {
-            songslist = this.currentsonglist;
-        }
-        for (var i = 0; i < songslist.length; i++) {
-            var song: any = songslist[i];
+        for (var i = 0; i < this.currentsonglist.length; i++) {
+            var song: any = this.currentsonglist[i];
+            console.log(song.tags.title)
             if (song.tags.title == this.currentsong.tags.title) {
-                if (i < Number(songslist.length-1)) {
-                    console.log(i, songslist.length)
-                    this.updateCurrentSong(songslist[++i])
+                if (i < this.currentsonglist.length) {
+                    console.log(i, this.currentsonglist.length)
+                    this.updateCurrentSong(this.currentsonglist[++i])
                 }
             }
         }

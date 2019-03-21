@@ -111,8 +111,7 @@ label {
 }
 
 .fa-heart {
-    position: absolute;
-    right: -6px;
+    float:right;
 }
 
 .item-native {
@@ -121,7 +120,7 @@ label {
 
 
 .musicControl{
-    margin-left:24%;
+    text-align:center;
 }
 .fplay {
     padding-right: 26px;
@@ -220,9 +219,14 @@ label {
     display: block;
 }
 .currentplayingsongGif {
-    position: absolute;
-    right: 0;
+    float: right    
 }
 iframe{
     border:0;
+}
+.currentimages {
+    width: 40px;
+    height: 35px;
+    border: 2px solid #428bca;
+    border-radius: 6px;
 }

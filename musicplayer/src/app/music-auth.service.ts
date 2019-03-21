@@ -85,7 +85,7 @@ export class MusicAuthService {
     getMeta(object, blob, category) {
         jsmediatags.read(blob, {
             onSuccess: tag => {
-                object.handleSongs(tag, category);
+                object.handleSongs(blob, tag, category);
             },
             onError: error => {
                 console.log('error');
