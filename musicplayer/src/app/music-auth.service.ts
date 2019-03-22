@@ -64,6 +64,20 @@ export class MusicAuthService {
         return this.http.get(this.userauth.url + '/getFavouriteMusic', { headers: headers });
 
     }
+    searchAlbum(song) {
+        var params = new HttpParams().set('albumname', song);
+        this.token = this.userauth.loadToken();
+        const headers = this._headers.append('Authorization', 'Bearer ' + this.token);
+        return this.http.get(this.userauth.url + '/searchAlbum', { params: params, headers: headers });
+
+    }
+    searchSong(song) {
+        var params = new HttpParams().set('songname', song);
+        this.token = this.userauth.loadToken();
+        const headers = this._headers.append('Authorization', 'Bearer ' + this.token);
+        return this.http.get(this.userauth.url + '/search', { params: params, headers: headers });
+
+    }
     uploadRecentSong(songdetails) {
         this.token = this.userauth.loadToken();
         const headers = this._headers.append('Authorization', 'Bearer ' + this.token);

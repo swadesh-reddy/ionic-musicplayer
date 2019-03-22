@@ -35,6 +35,7 @@ export class Tab1Page {
     public currentsong: any;
     public allSongs: any = {};
     public audio: any
+    public searchedContent: any
     public currentTime: any
     public currminutes: any
     public currseconds: any
@@ -50,7 +51,9 @@ export class Tab1Page {
     public favouriteSong: Boolean;
     public currentsongname: any;
     public audiourl: any;
+    public searched: Boolean=false;
     public categoryname: any;
+    public searchedArray: Array<object> = [];
     public imgHeight: any;
     public mood = ['Love', 'party', 'sad', 'pleasent'];
     public color = ['#5cb85c', '#428bca', '	#d9534f', '#f9f9f9'];
@@ -103,6 +106,9 @@ export class Tab1Page {
         tag.title = this.musicauth.formatTitle(tag.tags.title, 30, 18);
         tag.blob = blob;
         category.push(tag);
+        if (this.searched) {
+            this.updatedCurrentSong(this.searchedContent.tags.title, this.currentsonglist)
+        }
     }
 
     getMusicByName(data, category) {
@@ -293,15 +299,20 @@ export class Tab1Page {
             this.currentsonglist = [];
             this.audio.pause();
         }
+        console.log(currentsong, songlist)
         for (var song in songlist) {
             if (songlist[song].tags.title == currentsong) {
+
                 this.currentsong = songlist[song];
                 this.loadSong();
             }
             songlist[song].fulltitle = songlist[song].tags.title.substring(35, 18)
         }
-        this.uploadRecentSong(currentsong);
         this.currentsonglist = songlist;
+        if (!this.searched) {
+            this.uploadRecentSong(currentsong);
+        }
+      
     }
 
     greetUser() {
@@ -350,5 +361,26 @@ export class Tab1Page {
                 }
             }
         }
+    }
+    searchSong(event) {
+        console.log(event.target.value);
+        this.searchedArray = [];
+        if (event.target.value) {
+        this.musicauth.searchSong(event.target.value).subscribe((data) => {
+            console.log(data);
+                this.getMusicByName(data, this.searchedArray)
+        })
+            console.log(this.searchedArray)
+        }
+    }
+    searchAlbum(song) {
+        this.searchedArray = [];
+        this.searched = true;
+        this.musicauth.searchAlbum(song.tags.album).subscribe((data) => {
+            console.log(data);
+            this.searchedContent = song;
+            this.currentsonglist = [];
+           this.getMusicByName(data, this.currentsonglist)
+             })
     }
 }

@@ -166,6 +166,7 @@ router.get('/getFavouriteMusic', verifyToken, (req, res) => {
         }
     })
 })
+
 router.get('/getRecentMusic', verifyToken, (req, res) => {
     var decoded = jwt_decode(req.token);
 
@@ -189,6 +190,26 @@ router.get('/findRecentMusic', verifyToken, (req, res) => {
         if (err) { throw err }
         else {
 
+            res.json(data);
+        }
+    })
+})
+router.get('/search', verifyToken, (req, res) => {
+    let song = {
+        'songname': { '$regex': req.query.songname, '$options': 'i' }
+      }
+    Song.getSongBySongname(song, function (err, data) {
+        if (err) { throw err }
+        else {
+            res.json(data);
+        }
+    })
+})
+router.get('/searchAlbum', verifyToken, (req, res) => {
+    let song = { 'albumname': req.query.albumname }
+    Song.getSongByAlbumName(song, function (err, data) {
+        if (err) { throw err }
+        else {
             res.json(data);
         }
     })

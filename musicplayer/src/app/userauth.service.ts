@@ -9,7 +9,7 @@ export class UserauthService {
     authToken: any;
     user: any
     token: any
-    public url = "http://7fe7618d.ngrok.io";
+    public url = "http://localhost:3000";
     private _headers = new HttpHeaders({
         "cache-control": 'no-cache',
     });

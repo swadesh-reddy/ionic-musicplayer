@@ -13,7 +13,12 @@ var songSchema = mongoose.Schema({
 var song = module.exports = mongoose.model('song', songSchema);
 
 module.exports.getSongBySongname = function (songname, callback) {
-    song.findOne(songname, callback);
+    console.log(songname)
+    song.find(songname, callback);
+}
+module.exports.getSongByAlbumName = function (songname, callback) {
+    console.log(songname)
+    song.find(songname, callback);
 }
 
 module.exports.getSongsByLanguage = function (songname, callback) {
