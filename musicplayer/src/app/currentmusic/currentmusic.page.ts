@@ -38,8 +38,6 @@ export class CurrentmusicPage implements OnInit {
     public favouriteSong: Boolean;
     public currentsonglist: Array<object> = [];
 
-
-
     constructor(private _location: Location, private currentmusic: CurrentMusicService, private route: ActivatedRoute, platform: Platform, private nativeAudio: NativeAudio, private media: Media, private userauth: UserauthService, private musicauth: MusicAuthService, private router: Router) {
 
         platform.ready().then((readySource) => {
@@ -124,6 +122,7 @@ export class CurrentmusicPage implements OnInit {
         seconds = (seconds >= 10) ? seconds : "0" + seconds;
         return seconds;
     }
+
     setloop() {
         this.currentSongloop = this.audio.loop;
         if (this.currentSongloop == false) {
@@ -174,6 +173,7 @@ export class CurrentmusicPage implements OnInit {
         this.currentsong = song;
         this.loadSong();
     }
+
     playNextSong() {
         for (var i = 0; i < this.currentsonglist.length; i++) {
             var song: any = this.currentsonglist[i];

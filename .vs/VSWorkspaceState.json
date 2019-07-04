@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\musicplayer",
-    "\\musicplayer\\src"
+    "\\musicplayer\\router",
+    "\\musicplayer\\src",
+    "\\musicplayer\\src\\app",
+    "\\musicplayer\\src\\app\\tab1"
   ],
-  "SelectedNode": "\\musicplayer",
+  "SelectedNode": "\\musicplayer\\src\\app\\tab1\\tab1.page.ts",
   "PreviewInSolutionExplorer": false
 }

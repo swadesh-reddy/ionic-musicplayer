@@ -38,26 +38,33 @@ export class Tab3Page implements OnInit {
     }
     onUpdate(data) {
         console.log(data)
-        this.loading = true;
-        var form = new FormData();
-        form.append("username", data.username);
-        form.append("password", data.password);
-        form.append("email", data.email);
-        form.append("contact", data.contact);
-        form.append("propic", this.image, this.image.name);
-        this.userauth.updateData(form).subscribe(data => {
-            this.response = data;
-            if (this.response.success) {
-                console.log(data);
-                this.loading = false;
-            }
-            else {
-                this.loading = false;
-                console.log(data);
-            }
-        });
+        if (this.image != null) {
+            this.loading = true;
+            var form = new FormData();
+            form.append("username", data.username);
+            form.append("password", data.password);
+            form.append("email", data.email);
+            form.append("contact", data.contact);
+            form.append("propic", this.image, this.image.name);
+            this.userauth.updateData(form).subscribe(data => {
+                this.response = data;
+                if (this.response.success) {
+                    console.log(data);
+                    this.loading = false;
+                }
+                else {
+                    this.loading = false;
+                    console.log(data);
+                }
+            });
+        }
     }
     navigateToUploadSongs() {
         this.router.navigate(['/upload-songs'])
+    }
+
+    changeUsername(username) {
+        console.log(username)
+
     }
     }

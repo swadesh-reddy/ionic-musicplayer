@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 var config = require("./config");
 var cors = require("cors");
 var users = require("./router/users");
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3100;
 var url = config.database;
 const router = express.Router();
 const jwt = require('jsonwebtoken');
@@ -31,5 +31,3 @@ app.use('/', users);
 
 
 app.listen(port, () => console.log("started"));
-
-

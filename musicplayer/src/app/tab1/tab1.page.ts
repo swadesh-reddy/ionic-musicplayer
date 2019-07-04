@@ -4,6 +4,7 @@ import { Platform } from "@ionic/angular";
 import { MusicAuthService } from '../music-auth.service';
 import { CurrentMusicService } from '../current-music.service';
 import { AllSongs } from '../allsongs';
+import { File } from '@ionic-native/file/ngx';
 import { SongInfo } from '../songInfo';
 import { UserauthService } from '../userauth.service';
 import { Location } from '@angular/common';
@@ -56,18 +57,22 @@ export class Tab1Page {
     public searchedArray: Array<object> = [];
     public imgHeight: any;
     public mood = ['Love', 'party', 'sad', 'pleasent'];
-    public color = ['#5cb85c', '#428bca', '	#d9534f', '#f9f9f9'];
-
-    constructor(private _location: Location, private platform: Platform, private musicauth: MusicAuthService, private currentmusic: CurrentMusicService, private userauth: UserauthService, private router: Router) {
+    public color = ['#5cb85c', '#428bca', '	#d9534f', 'gray'];
+    public result:any
+    constructor(private file: File, private _location: Location, private platform: Platform, private musicauth: MusicAuthService, private currentmusic: CurrentMusicService, private userauth: UserauthService, private router: Router) {
 
         platform.ready().then((readySource) => {
             this.clientWidth = platform.width();
             this.clientHeight = platform.height();
-             this.imgHeight = this.clientHeight - this.clientHeight / 2;
-            this.clientHeight = (this.clientHeight-98)+'px';
-            console.log(this.clientHeight);
+            this.imgHeight = this.clientHeight - this.clientHeight / 2;
+            this.clientHeight = (this.clientHeight - 98) + 'px';
+            //  var file = new File();
 
-        });
+            file.listDir(file.applicationDirectory, '').then((result) => {
+                this.result = JSON.stringify(result);
+                console.log(result);
+            })
+                })
     }
 
     ngOnInit() {
@@ -76,6 +81,7 @@ export class Tab1Page {
         this.loadFavouriteSongs();
         this.loadRecentSongs();
         this.greetUser();
+      
     }
 
     getProfile() {
@@ -270,13 +276,19 @@ export class Tab1Page {
         this.loadSong();
     }
     playNextSong() {
+
         for (var i = 0; i < this.currentsonglist.length; i++) {
             var song: any = this.currentsonglist[i];
             console.log(song.tags.title)
-            if (song.tags.title == this.currentsong.tags.title) {
-                if (i < this.currentsonglist.length) {
-                    console.log(i, this.currentsonglist.length)
-                    this.updateCurrentSong(this.currentsonglist[++i])
+            if (this.audioqueue.length > 0) {
+                this.updateCurrentSong(this.audioqueue[0])
+                this.removeFromAudioQueue(song)
+            } else {
+                if (song.tags.title == this.currentsong.tags.title) {
+                    if (i < this.currentsonglist.length) {
+                        console.log(i, this.currentsonglist.length)
+                        this.updateCurrentSong(this.currentsonglist[++i])
+                    }
                 }
             }
         }
@@ -302,7 +314,6 @@ export class Tab1Page {
         console.log(currentsong, songlist)
         for (var song in songlist) {
             if (songlist[song].tags.title == currentsong) {
-
                 this.currentsong = songlist[song];
                 this.loadSong();
             }

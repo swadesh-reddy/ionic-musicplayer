@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "ionic3musicplayer", "ionic3musicplayer.jsproj", "{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Android = Debug|Android
+		Debug|iOS = Debug|iOS
+		Debug|Windows-ARM = Debug|Windows-ARM
+		Debug|Windows-x64 = Debug|Windows-x64
+		Debug|Windows-x86 = Debug|Windows-x86
+		Release|Android = Release|Android
+		Release|iOS = Release|iOS
+		Release|Windows-ARM = Release|Windows-ARM
+		Release|Windows-x64 = Release|Windows-x64
+		Release|Windows-x86 = Release|Windows-x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|Android.ActiveCfg = Debug|Android
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|Android.Build.0 = Debug|Android
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|Android.Deploy.0 = Debug|Android
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|iOS.ActiveCfg = Debug|iOS
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|iOS.Build.0 = Debug|iOS
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|iOS.Deploy.0 = Debug|iOS
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|Windows-ARM.ActiveCfg = Debug|Windows-ARM
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|Windows-ARM.Build.0 = Debug|Windows-ARM
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|Windows-ARM.Deploy.0 = Debug|Windows-ARM
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|Windows-x64.ActiveCfg = Debug|Windows-x64
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|Windows-x64.Build.0 = Debug|Windows-x64
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|Windows-x64.Deploy.0 = Debug|Windows-x64
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|Windows-x86.ActiveCfg = Debug|Windows-x86
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|Windows-x86.Build.0 = Debug|Windows-x86
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Debug|Windows-x86.Deploy.0 = Debug|Windows-x86
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|Android.ActiveCfg = Release|Android
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|Android.Build.0 = Release|Android
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|Android.Deploy.0 = Release|Android
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|iOS.ActiveCfg = Release|iOS
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|iOS.Build.0 = Release|iOS
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|iOS.Deploy.0 = Release|iOS
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|Windows-ARM.ActiveCfg = Release|Windows-ARM
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|Windows-ARM.Build.0 = Release|Windows-ARM
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|Windows-ARM.Deploy.0 = Release|Windows-ARM
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|Windows-x64.ActiveCfg = Release|Windows-x64
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|Windows-x64.Build.0 = Release|Windows-x64
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|Windows-x64.Deploy.0 = Release|Windows-x64
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|Windows-x86.ActiveCfg = Release|Windows-x86
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|Windows-x86.Build.0 = Release|Windows-x86
+		{B2EA67B0-4737-4CF5-A885-127D0F3FFF68}.Release|Windows-x86.Deploy.0 = Release|Windows-x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C57E691-C67F-4DED-A10C-3F97D2AFBE56}
+	EndGlobalSection
+EndGlobal

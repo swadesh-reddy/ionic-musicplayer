@@ -1,17 +1,22 @@
 <ion-header>
-             <input type="search" class="search" (keyup)="searchSong($event)"/><i class="fa fa-search"></i>
-            <img *ngIf="!user.propic" src="../../assets/images/user.png" class="img-circle userpic" (click)="navigateToProfile()" width="30" height="30" />
+    <!-- <input type="search" class="search" (keyup)="searchSong($event)" /><i class="fa fa-search"></i>-->
+    <div class="col-xs-8 greet">{{greet}},{{user.username}}</div>
+    <div class="4">
+        <img *ngIf="!user.propic" src="../../assets/images/user.png" class="img-circle userpic" (click)="navigateToProfile()" width="30" height="30" />
         <img *ngIf="user.propic" [src]="pic" class="img-circle userpic" (click)="navigateToProfile()" width="30" height="30" />
-   
+    </div> <!--<div *ngIf="searchedArray.length" class=" searchpanel panel panel-default">
+        <div *ngFor="let song of searchedArray" class="searchedArray">
+                <div class="searchedtuneimage"><img *ngIf="song" [src]="song.image" class="searchimage"></div>
+                <div class="searchedtuneimage col-xs-10">
+                    <label class="searchsonglabels" (click)="searchAlbum(song, song.tags.title)">{{song.tags.title}}</label><br />
+                    <label class="searchsonglabels">{{song.tags.album}}</label>
+                </div>
+         </div>
+    </div>-->
+
 </ion-header>
 <ion-content>
-    <div class="col-xs-12" style="float: left;font-size: 15px;margin-top: 10px;">{{greet}}, {{user.username}}</div>
-    <div *ngIf="searchedArray.length" class=" searchpanel panel panel-default">
-        <div *ngFor="let song of searchedArray" class="">
-                <img *ngIf="song" [src]="song.image" class="searchimage">
-                <label (click)="searchAlbum(song, song.tags.title)">{{song.tags.title}}</label>
-          </div>
-    </div>
+   
     <div *ngFor="let category of allSongs | keyvalue" class="col-md-8 tab1" style="padding-left:0px;">
         <h5 class="sideheading">{{category.key}}</h5>
         <div class="scrollX">
