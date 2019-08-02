@@ -3,6 +3,7 @@ import { User } from '../user';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserauthService } from '../userauth.service';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-tab3',
@@ -16,7 +17,7 @@ export class Tab3Page implements OnInit {
     response: any;
     public pic:any
     public files: any[];
-    constructor(private userauth: UserauthService, private router:Router) { }
+    constructor(private userauth: UserauthService, private router: Router, private camera: Camera) { }
     ngOnInit() {
         this.getProfile();
     }
@@ -63,8 +64,20 @@ export class Tab3Page implements OnInit {
         this.router.navigate(['/upload-songs'])
     }
 
-    changeUsername(username) {
-        console.log(username)
+    
+    takePicture() {
+        const options: CameraOptions = {
+            quality: 100,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE
+        }
 
+        this.camera.getPicture(options).then((imageData) => {   
+            this.pic = 'data:image/jpeg;base64,' + imageData;
+        }, (err) => {
+            // Handle error
+            console.log("Camera issue:" + err);
+        });
     }
     }

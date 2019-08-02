@@ -21,5 +21,5 @@ export class CurrentMusicService {
     getCurrentSongStatus(Object) {
         Object.getSongs(this.currentsong, this.currentsonglist);
     }
-   
+  
 }

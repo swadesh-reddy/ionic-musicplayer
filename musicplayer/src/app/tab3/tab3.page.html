@@ -9,10 +9,20 @@
     <div class="container-fluid updateDiv">
         <form (ngSubmit)="onUpdate(updateForm.value)" #updateForm="ngForm">
             <div class="col-xs-12 image">
-                <img *ngIf="!user.propic" src="../../assets/images/user.png" class="img-circle profilepic"  width="60" height="60" />
-                <img  *ngIf="user.propic" [src]="pic" class="profilepic img-circle" width="60" height="60" />
-                <label class="fa fa-plus" for="userpic"></label>
-                <input type="file" id="userpic" name="userpic" (change)="onImageChange($event)" hidden />
+                <div class="dropdown">
+                    <img *ngIf="!user.propic" src="../../assets/images/user.png" class="img-circle profilepic" width="60" height="60" />
+                    <img *ngIf="user.propic" [src]="pic" class="profilepic img-circle" width="60" height="60" />
+
+                    <label class="fa fa-plus dropdown-toggle" data-toggle="dropdown">
+                    </label>
+                    <div class="dropdown-menu">
+                        <label class="dropdown-item" for="userpic">choose from gallery <i class="fa fa-picture-o"></i></label><br />
+                        <label class="dropdown-item" (click)="takePicture()">open camera <i class="fa fa-camera"> </i></label>
+                        <input type="file" id="userpic" name="userpic" (change)="onImageChange($event)" hidden />
+                    </div>
+                  
+
+                </div>
             </div>
             <div class="form-input">
                 <div class="form-group col-xs-12" style="margin-top:20px">
